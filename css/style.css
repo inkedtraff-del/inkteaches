@@ -1,0 +1,888 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
+
+/* ==========================================================================
+   Light Arbitrage Theme - Core Variables (Red & White)
+   ========================================================================== */
+:root {
+  --bg-color: #F2F4F7; /* Светло-серый фон страницы */
+  
+  --surface-color: #FFFFFF; /* Белые карточки */
+  --surface-hover: #FAFAFA;
+  --border-color: rgba(0, 0, 0, 0.08);
+  
+  --text-main: #111111; /* Глубокий черный для заголовков */
+  --text-muted: #667085; /* Серый для описаний */
+  --text-platinum: #1D2939; /* Темно-серый для подзаголовков */
+  
+  /* Агрессивный красный с маски персонажа и контрастный черный */
+  --accent-cyan: #E51A22; /* Основной Красный */
+  --accent-pink: #111111; /* Дополнительный Черный */
+  --accent-gradient: linear-gradient(135deg, #E51A22 0%, #B31219 100%);
+  
+  /* Шрифты */
+  --font-display: 'Oswald', sans-serif;
+  --font-sys: 'Inter', system-ui, sans-serif;
+  --font-cyber: 'Orbitron', sans-serif; 
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   Body & Static Abstract Texture
+   ========================================================================== */
+body {
+  font-family: var(--font-sys);
+  background-color: var(--bg-color);
+  /* Легкий градиентный засвет для объема на светлом фоне */
+  background-image: 
+    radial-gradient(circle at 0% 0%, rgba(229, 26, 34, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(17, 17, 17, 0.03) 0%, transparent 50%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Статичный шум (очень легкий для светлой темы) */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+  z-index: -10;
+  pointer-events: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   Typography & Editorial Headers
+   ========================================================================== */
+h1, h2, h3, .module-head {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+}
+
+.editorial-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  border-left: 4px solid var(--accent-cyan);
+  padding-left: 1.5rem;
+}
+
+.ed-num {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: -0.5rem;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-main);
+  letter-spacing: 0.02em;
+}
+
+.section-lead {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin-bottom: 3rem;
+}
+
+.quote {
+  font-style: normal;
+  color: var(--text-main);
+  margin-top: 3rem;
+  font-size: 1.1rem;
+  padding: 2rem;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--accent-cyan);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+/* ==========================================================================
+   Hero Section 
+   ========================================================================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 0;
+  position: relative;
+  background-color: transparent; 
+}
+
+/* Картинка плавно уходит в прозрачность, сливаясь со светлым фоном body */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url('../assets/cyber-bg.jpg');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  opacity: 1; 
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+@media (min-width: 769px) {
+  .hero::before {
+    background-image: url('../assets/cyber-bg-desktop.jpg');
+  }
+}
+
+.vertical-decor {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.3em;
+  color: rgba(17, 17, 17, 0.1); /* Темно-серый декор */
+  writing-mode: vertical-rl;
+  z-index: 1;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.left-decor { left: 2rem; transform: translateY(-50%) rotate(180deg); }
+.right-decor { right: 2rem; }
+
+@media (max-width: 1200px) {
+  .vertical-decor { display: none; }
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3.5rem;
+  position: relative;
+  z-index: 2; 
+}
+
+.hero-top {
+  width: 100%;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: inline-block;
+  border-bottom: 2px solid var(--text-main);
+  padding-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   HERO TITLE - Теперь темный и читабельный
+   ========================================================================== */
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 25vw, 15rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+  margin-left: -5px;
+  color: var(--text-main);
+}
+
+.hero-subtitle {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: var(--text-platinum);
+  max-width: 600px;
+  font-weight: 600;
+  border-left: 3px solid var(--accent-cyan);
+  padding-left: 1rem;
+}
+
+.hero-bottomGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  background: rgba(255, 255, 255, 0.9); /* Плотная белая плашка */
+  padding: 2.5rem;
+  border: 1px solid var(--border-color);
+  width: 100%;
+  max-width: 600px;
+  border-top: 4px solid var(--accent-cyan);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  backdrop-filter: blur(5px);
+}
+
+.hero-free {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Timer
+   ========================================================================== */
+.hero-timer {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.tSep {
+  font-size: 2rem;
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+.time-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time-box span {
+  font-family: var(--font-cyber);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--text-main);
+  display: inline-block;
+  transition: transform 0.1s ease-out;
+}
+
+.time-box span.pop {
+  animation: number-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes number-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); color: var(--accent-cyan); }
+  100% { transform: scale(1); }
+}
+
+.time-label {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   MOBILE HERO REFACTOR
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto; 
+    padding: 1.5rem 0 3rem; 
+    justify-content: flex-start;
+  }
+  
+  .hero-content { gap: 1.5rem; }
+
+  .hero-top { width: 100%; display: flex; flex-direction: column; }
+
+  .brand { align-self: flex-start; margin-bottom: 0.5rem; }
+
+  .hero-title {
+    font-size: 26vw; 
+    line-height: 0.9; 
+    text-align: left; 
+    width: 100%;
+    margin: 0 0 1rem 0; 
+  }
+  
+  .hero-subtitle {
+    font-size: 1.15rem;
+    text-align: left;
+    align-self: flex-start;
+    border-left: none; 
+    padding-left: 0;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .hero-bottomGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    width: 100%;
+    max-width: 600px;
+    padding: 2.5rem;
+    
+    /* Эффект прозрачного стекла */
+    background: rgba(255, 255, 255, 0.15) !important; 
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    
+    /* Граница и акцент сверху */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 4px solid var(--accent-cyan);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    
+    position: relative;
+    z-index: 10;
+  }
+  
+  .hero-free { font-size: 0.95rem; line-height: 1.4; }
+  
+  .hero-timer {
+    justify-content: center; 
+    width: 100%;
+    margin: 0.5rem 0;
+    gap: 0.75rem;
+  }
+  
+  .time-box span { font-size: 3.8rem; }
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  background: transparent;
+  color: var(--text-main);
+  font-family: var(--font-display);
+  font-size: clamp(16px, 4vw, 1.4rem); 
+  letter-spacing: 0.05em;
+  border: 2px solid var(--text-main);
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s ease;
+  white-space: nowrap !important;
+  word-break: keep-all;
+  font-weight: 700;
+}
+
+.btn:hover {
+  background: var(--text-main);
+  color: #fff;
+}
+
+.btn-spark {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  background: var(--accent-cyan); /* Красная кнопка */
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: clamp(16px, 4vw, 1.4rem);
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  border: none;
+  z-index: 1;
+  overflow: hidden;
+  width: 100%;
+  cursor: pointer;
+  white-space: nowrap !important;
+  word-break: keep-all;
+  box-shadow: 0 10px 20px rgba(229, 26, 34, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+.btn-spark:hover {
+  transform: translateY(-2px);
+  background: #B31219;
+  box-shadow: 0 15px 25px rgba(229, 26, 34, 0.3);
+}
+
+@media (max-width: 768px) {
+  .btn, .btn-spark { padding: 1rem 0.5rem; }
+}
+
+/* ==========================================================================
+   Sections & Scroll Animation
+   ========================================================================== */
+.section { padding: 5rem 0; position: relative; z-index: 2; }
+@media (max-width: 768px) { .section { padding: 3rem 0; } }
+
+.list-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media (min-width: 768px) { .list-grid { grid-template-columns: 1fr 1fr; } }
+
+.list-grid li {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(15px);
+  opacity: 0.5;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.list-grid li.glow-active {
+  transform: translateY(0);
+  opacity: 1;
+  color: var(--text-main);
+  border-left: 3px solid var(--accent-cyan);
+  background: var(--surface-color);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.list-grid li::before {
+  content: '>';
+  color: var(--accent-cyan);
+  font-family: var(--font-display);
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Decomposition & Format
+   ========================================================================== */
+.decomp-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 2rem; }
+@media (min-width: 768px) { .decomp-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.decomp-card {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+.decomp-card:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.decomp-num {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: rgba(17, 17, 17, 0.03); /* Бледная цифра на фоне */
+  position: absolute;
+  top: -10px; right: 10px;
+  line-height: 1;
+  z-index: 0;
+}
+
+.decomp-card h3 {
+  color: var(--text-main);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.decomp-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 1;
+}
+
+.format-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 768px) { .format-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.format-item {
+  border-left: 3px solid var(--accent-cyan);
+  padding-left: 1.5rem;
+  background: linear-gradient(90deg, rgba(229, 26, 34, 0.03) 0%, transparent 100%);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.format-icon {
+  font-family: var(--font-display);
+  color: var(--accent-cyan);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.format-item h3 { font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--text-main); }
+.format-item p { color: var(--text-muted); font-size: 0.95rem; }
+
+/* ==========================================================================
+   CASES / REVIEWS 
+   ========================================================================== */
+.cases-slider-wrap { width: 100%; position: relative; margin-left: -24px; margin-right: -24px; width: calc(100% + 48px); }
+.cases-slider {
+  display: flex; overflow-x: auto; gap: 1.5rem; padding: 1rem 24px 2rem 24px;
+  scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; 
+}
+.cases-slider::-webkit-scrollbar { display: none; }
+.cases-slider.active { cursor: grabbing; cursor: -webkit-grabbing; }
+
+.case-card {
+  min-width: 320px; width: 320px; flex-shrink: 0; scroll-snap-align: start;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-top: 4px solid var(--text-main);
+  padding: 2rem; border-radius: 8px; position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+  user-select: none;
+}
+
+.case-card:hover {
+  border-top-color: var(--accent-cyan);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  transform: translateY(-5px);
+}
+
+.case-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1.5rem; padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.case-user { display: flex; align-items: center; gap: 1rem; }
+
+.case-avatar-wrap {
+  width: 50px; height: 50px; border-radius: 50%; padding: 2px;
+  background: var(--text-main); display: flex; align-items: center; justify-content: center;
+}
+.case-avatar { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; pointer-events: none; }
+
+.case-name { font-family: var(--font-display); font-size: 1.2rem; color: var(--text-main); text-transform: uppercase; font-weight: 700; }
+.case-roi { font-family: var(--font-cyber); font-size: 1.1rem; color: var(--accent-cyan); font-weight: 900; white-space: nowrap; }
+.case-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+/* ==========================================================================
+   Accordions (Modules & FAQ)
+   ========================================================================== */
+.accordion { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.module, .faq-item {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid transparent;
+  transition: all 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.module:hover, .faq-item:hover { border-left-color: var(--accent-cyan); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+.module-head, .faq-question {
+  width: 100%; text-align: left; background: none; border: none; padding: 1.5rem;
+  color: var(--text-main); font-size: 1.2rem; letter-spacing: 0.05em; cursor: pointer; font-weight: 700;
+}
+
+.module-body, .faq-answer {
+  height: 0; overflow: hidden; transition: height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background: #FAFAFA; color: var(--text-muted);
+}
+
+.module.active .module-head, .faq-item.active .faq-question { border-bottom: 1px solid var(--border-color); }
+
+.module-body ul, .faq-answer-content { padding: 1.5rem; }
+.module-body ul li { padding: 0.5rem 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; color: var(--text-main); }
+.module-body ul li:last-child { border: none; }
+.module-body ul li::before { content: ''; width: 6px; height: 6px; background: var(--accent-cyan); margin-right: 12px; }
+
+/* ==========================================================================
+   Pricing Section
+   ========================================================================== */
+.pricing-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; align-items: stretch; }
+@media (min-width: 992px) { .pricing-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.price-card {
+  background: var(--surface-color); border: 1px solid var(--border-color);
+  padding: 3rem 2rem; display: flex; flex-direction: column; position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.price-card.featured {
+  border: 2px solid var(--accent-cyan);
+  background: #FFFFFF;
+  box-shadow: 0 15px 35px rgba(229, 26, 34, 0.1);
+  transform: scale(1.02);
+}
+
+.badge {
+  position: absolute; top: -12px; right: 20px; background: var(--text-main); color: #fff;
+  font-family: var(--font-display); font-size: 0.8rem; padding: 0.4rem 1rem; letter-spacing: 0.1em; font-weight: 700;
+}
+
+.price-card h3 { font-size: 1.8rem; color: var(--text-main); margin-bottom: 0.5rem; }
+.price { font-family: var(--font-display); font-size: 3rem; margin-bottom: 2rem; color: var(--accent-cyan); line-height: 1; font-weight: 700; }
+.price-card ul { margin-bottom: 2rem; flex-grow: 1; }
+.price-card li { color: var(--text-muted); padding: 0.75rem 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; }
+.price-card a { margin-top: auto; }
+
+/* ==========================================================================
+   Footer & Socials
+   ========================================================================== */
+.footer {
+  padding: 4rem 0; border-top: 1px solid var(--border-color); background: #E5E7EB;
+  position: relative; z-index: 2;
+}
+.footer .container { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+.footer-copy { font-family: var(--font-display); color: var(--text-main); letter-spacing: 0.05em; font-weight: 700; }
+.footer-slogan { color: var(--text-muted); font-size: 0.9rem; }
+.footer-socials { margin-top: 1.5rem; }
+.cyber-link { font-family: var(--font-display); font-size: 1.1rem; color: var(--text-main); text-decoration: none; letter-spacing: 0.15em; font-weight: 700; transition: all 0.3s ease; }
+.cyber-link:hover { color: var(--accent-cyan); }
+
+/* ==========================================================================
+   FINAL MOBILE OVERRIDE
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero::before {
+    height: 75vh !important;
+    -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%) !important;
+    mask-image: linear-gradient(to bottom, black 40%, transparent 100%) !important;
+    background-position: center top !important;
+  }
+  .hero { background-color: transparent !important; }
+  .timer-container { transform: scale(1.3) !important; margin: 60px auto !important; }
+  .timer-digit { font-size: 2.8rem !important; letter-spacing: -1px; }
+}
+/* --- Специфические стили для многослойности в Hero --- */
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 5;
+}
+
+/* Слой 1: Заголовок */
+.hero-top {
+  position: relative;
+  z-index: 1; /* Самый нижний слой внутри контента */
+}
+
+/* Слой 2: Персонаж */
+.hero-character-layer {
+  position: absolute;
+  top: 15%; /* Регулировка положения головы относительно текста */
+  left: 50%;
+  transform: translateX(-40%); /* Смещение для динамики */
+  width: 100%;
+  max-width: 500px;
+  z-index: 2; /* Поверх заголовка */
+  pointer-events: none; /* Чтобы не мешал кликать по кнопкам */
+}
+
+.hero-character-img {
+  width: 100%;
+  display: block;
+  filter: drop-shadow(0 20px 50px rgba(0,0,0,0.1));
+}
+
+/* Слой 3: Нижний блок с эффектом стекла */
+.hero-bottomGroup {
+  position: relative;
+  z-index: 3; /* Поверх персонажа */
+  background: rgba(255, 255, 255, 0.7) !important; /* Полупрозрачный белый */
+  backdrop-filter: blur(15px); /* Эффект матового стекла */
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  margin-top: auto; /* Прижимаем к низу в мобильной версии */
+}
+
+/* Адаптив для мобилок */
+@media (max-width: 768px) {
+  .hero {
+      min-height: 950px; /* Увеличиваем высоту, чтобы влез персонаж */
+      padding-top: 2rem;
+  }
+
+  .hero-title {
+      font-size: 22vw;
+      position: relative;
+      z-index: 1;
+  }
+
+  .hero-character-layer {
+      top: 180px; /* Позиционируем голову под INKET */
+      transform: translateX(-35%);
+      max-width: 120%;
+  }
+
+  .hero-bottomGroup {
+      margin-top: 280px; /* Отступ, чтобы персонаж был виден */
+      width: 100%;
+      padding: 2rem 1.5rem;
+  }
+
+  .hero-subtitle {
+      border-left: 3px solid var(--accent-cyan);
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+  }
+}
+/* ==========================================================================
+   Hero Section - CLEAN VERSION 2026
+   ========================================================================== */
+   .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 0;
+    position: relative;
+    background-color: transparent; 
+    overflow: hidden; /* Важно, чтобы персонаж не создавал горизонтальный скролл */
+  }
+  
+  /* УДАЛИ СТАРЫЙ .hero::before С КАРТИНКОЙ CYBER-BG, ОН СОЗДАЕТ ВТОРОЙ ФОН */
+  
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    position: relative;
+    z-index: 5; 
+  }
+  
+  /* Слой 1: Заголовок (самый дальний) */
+  .hero-top {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
+  
+  /* Слой 2: Твой персонаж pers.webp (посередине) */
+  .hero-character-layer {
+    position: absolute;
+    top: 10%; 
+    right: -10%; /* На десктопе уводим вбок */
+    width: 100%;
+    max-width: 600px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .hero-character-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Слой 3: Интерфейс с Glassmorphism (ближний к пользователю) */
+  .hero-bottomGroup {
+    position: relative;
+    z-index: 10; 
+    background: rgba(255, 255, 255, 0.7) !important; 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    width: 100%;
+    max-width: 600px;
+    border-top: 4px solid var(--accent-cyan);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  }
+  
+  /* Фикс для мобильной версии (убираем двойной фон здесь тоже) */
+  @media (max-width: 768px) {
+    .hero::before {
+      display: none !important; /* Гарантированно отключаем старый фон */
+    }
+  
+    .hero-title {
+      font-size: 24vw; 
+      z-index: 1;
+    }
+  
+    .hero-character-layer {
+      top: 140px; /* Сажаем голову четко под слово INKET */
+      left: 50%;
+      transform: translateX(-40%);
+      max-width: 130%;
+      right: auto;
+    }
+  
+    .hero-bottomGroup {
+      margin-top: 240px; /* Создаем окно для персонажа */
+      background: rgba(255, 255, 255, 0.8) !important;
+    }
+  }
+  /* 1. По умолчанию скрываем персонажа для десктопной версии */
+.hero-character-layer {
+  display: none; 
+}
+
+/* 2. Включаем и настраиваем только для мобильных устройств */
+@media (max-width: 768px) {
+  .hero-character-layer {
+    display: block; /* Показываем только на мобилках */
+    position: absolute;
+    top: 140px; /* Позиция головы под текстом INKET */
+    left: 50%;
+    transform: translateX(-40%);
+    width: 130%; /* Делаем крупнее для эффекта присутствия */
+    max-width: none;
+    z-index: 2; /* Между текстом и плашкой таймера */
+    pointer-events: none;
+  }
+
+  .hero-character-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Легкая тень для объема на светлом фоне */
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+  }
+
+  /* Корректируем отступ плашки, чтобы она не перекрывала лицо */
+  .hero-bottomGroup {
+    margin-top: 260px; 
+    position: relative;
+    z-index: 10;
+  }
+}
+@media (max-width: 768px) {
+  .hero-bottomGroup {
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(15px);
+    margin-top: 260px; /* Чтобы персонаж был виден за стеклом */
+  }
+}
