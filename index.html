@@ -3,11 +3,219 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>INKED.TEACHES | Системный арбитраж трафика</title>
+  <title>INKED.TEACHES | Системный арбитраж трафика для начинающих</title>
   <link rel="icon" type="image/png" href="fav.png">
-  <meta name="description" content="INKED.TEACHES. Начни заливать трафик в плюс и построй собственную медиабаинг-команду." />
+  <meta name="description" content="INKED.TEACHES. Пошаговая система заработка на арбитраже трафика с нуля. Начни заливать в плюс." />
   
-  <link rel="stylesheet" href="css/style.css" />
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
+
+:root {
+  --bg-color: #F2F4F7;
+  --surface-color: #FFFFFF;
+  --surface-hover: #FAFAFA;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --text-main: #111111;
+  --text-muted: #667085;
+  --text-platinum: #1D2939;
+  --accent-cyan: #E51A22;
+  --accent-pink: #111111;
+  --font-display: 'Oswald', sans-serif;
+  --font-sys: 'Inter', system-ui, sans-serif;
+  --font-cyber: 'Orbitron', sans-serif; 
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sys);
+  background-color: var(--bg-color) !important;
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  position: relative;
+}
+
+html::before {
+  content: '' !important; position: fixed !important; top: -50% !important; left: -50% !important; 
+  width: 200% !important; height: 200% !important;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(179, 18, 25, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 80% 20%, rgba(229, 26, 34, 0.05) 0%, transparent 35%),
+    radial-gradient(circle at 20% 80%, rgba(17, 17, 17, 0.04) 0%, transparent 45%) !important;
+  animation: ambientShift 12s ease-in-out infinite alternate !important;
+  z-index: -10 !important; pointer-events: none !important;
+}
+
+html::after {
+  content: '' !important; position: fixed !important; top: 0 !important; left: 0 !important; 
+  width: 100vw !important; height: 100vh !important;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E") !important;
+  z-index: -9 !important; pointer-events: none !important;
+}
+
+@keyframes ambientShift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-3%, -3%) rotate(1deg); }
+  100% { transform: translate(-6%, -6%) rotate(3deg); }
+}
+
+a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+ul { list-style: none; }
+.container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+
+h1, h2, h3, .module-head { font-family: var(--font-display); text-transform: uppercase; }
+.editorial-header { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 3rem; border-left: 4px solid var(--accent-cyan); padding-left: 1.5rem; }
+.ed-num { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.1em; margin-bottom: -0.5rem; }
+.section-title { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; line-height: 1.1; color: var(--text-main); letter-spacing: 0.02em; }
+.section-lead { font-size: 1.1rem; color: var(--text-muted); max-width: 700px; margin-bottom: 3rem; }
+.quote { font-style: normal; color: var(--text-main); margin-top: 3rem; font-size: 1.1rem; padding: 2rem; background: var(--surface-color); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-cyan); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+
+.reveal-hidden { opacity: 0; transform: translateY(20px); filter: blur(8px); transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.8s ease-out; }
+.reveal-active { opacity: 1; transform: translateY(0); filter: blur(0); }
+
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 4rem 0; position: relative; background-color: transparent; overflow: hidden; }
+.hero-content { display: flex; flex-direction: column; align-items: flex-start; gap: 2rem; position: relative; z-index: 5; }
+.hero-top { position: relative; z-index: 1; width: 100%; }
+
+.vertical-decor { position: absolute; top: 50%; transform: translateY(-50%); font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 0.3em; color: rgba(17, 17, 17, 0.1); writing-mode: vertical-rl; z-index: 1; text-transform: uppercase; pointer-events: none; }
+.left-decor { left: 2rem; transform: translateY(-50%) rotate(180deg); }
+.right-decor { right: 2rem; }
+@media (max-width: 1200px) { .vertical-decor { display: none; } }
+
+.brand { font-family: var(--font-display); font-size: 1rem; letter-spacing: 0.2em; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 1rem; display: inline-block; border-bottom: 2px solid var(--text-main); padding-bottom: 0.25rem; font-weight: 700; }
+.hero-title { font-family: var(--font-display); font-size: clamp(5rem, 25vw, 15rem); line-height: 1; letter-spacing: 0.02em; margin-bottom: 1.5rem; margin-left: -5px; color: var(--text-main); }
+
+.hero-character-layer {
+  display: block;
+  position: absolute;
+  top: 10%;
+  right: -10%;
+  width: 100%;
+  max-width: 600px;
+  z-index: 2;
+  pointer-events: none;
+}
+.hero-character-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+}
+
+.hero-bottomGroup {
+  position: relative; z-index: 10; background: rgba(255, 255, 255, 0.7) !important; 
+  backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); padding: 2.5rem; 
+  border: 1px solid rgba(255, 255, 255, 0.4); width: 100%; max-width: 600px; 
+  border-top: 4px solid var(--accent-cyan); box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+.hero-subtitle { font-size: clamp(1.2rem, 3vw, 1.8rem); color: var(--text-platinum); font-weight: 600; border-left: 3px solid var(--accent-cyan); padding-left: 1rem; margin-bottom: 1.5rem; }
+.hero-free { font-size: 1rem; color: var(--text-muted); line-height: 1.5; font-weight: 600; margin-bottom: 1rem; }
+
+.btn { display: inline-flex; justify-content: center; align-items: center; padding: 1.2rem 1.5rem; background: transparent; color: var(--text-main); font-family: var(--font-display); font-size: clamp(14px, 1.5vw, 1.1rem); letter-spacing: 0.05em; border: 2px solid var(--text-main); cursor: pointer; width: 100%; transition: all 0.2s ease; font-weight: 700; white-space: nowrap !important; }
+.btn:hover { background: var(--text-main); color: #fff; }
+.btn-spark { position: relative; display: inline-flex; justify-content: center; align-items: center; padding: 1.2rem 1.5rem; background: var(--accent-cyan); color: #FFFFFF; font-family: var(--font-display); font-size: clamp(14px, 1.5vw, 1.1rem); letter-spacing: 0.05em; font-weight: 700; border: none; cursor: pointer; width: 100%; box-shadow: 0 10px 20px rgba(229, 26, 34, 0.2); transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease; white-space: nowrap !important; }
+.btn-spark:hover { transform: translateY(-2px); background: #B31219; box-shadow: 0 15px 25px rgba(229, 26, 34, 0.3); }
+
+.section { padding: 5rem 0; position: relative; z-index: 2; }
+.list-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media (min-width: 768px) { .list-grid { grid-template-columns: 1fr 1fr; } }
+.list-grid li { background: var(--surface-color); border: 1px solid var(--border-color); padding: 1.5rem; font-size: 1rem; color: var(--text-muted); display: flex; align-items: center; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); transform: translateY(15px); opacity: 0.5; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.list-grid li.glow-active { transform: translateY(0); opacity: 1; color: var(--text-main); border-left: 3px solid var(--accent-cyan); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.list-grid li::before { content: '>'; color: var(--accent-cyan); font-family: var(--font-display); margin-right: 1rem; font-size: 1.2rem; font-weight: 700; }
+
+.decomp-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 2rem; }
+@media (min-width: 768px) { .decomp-grid { grid-template-columns: repeat(4, 1fr); } }
+.decomp-card { background: var(--surface-color); border: 1px solid var(--border-color); padding: 2rem; position: relative; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+.decomp-card:hover { border-color: var(--accent-cyan); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+.decomp-num { font-family: var(--font-display); font-size: 4rem; color: rgba(17, 17, 17, 0.03); position: absolute; top: -10px; right: 10px; line-height: 1; z-index: 0; }
+.decomp-card h3 { color: var(--text-main); font-size: 1.5rem; margin-bottom: 0.5rem; position: relative; z-index: 1; }
+.decomp-card p { color: var(--text-muted); font-size: 0.95rem; position: relative; z-index: 1; }
+
+.format-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 768px) { .format-grid { grid-template-columns: repeat(3, 1fr); } }
+.format-item { border-left: 3px solid var(--accent-cyan); padding-left: 1.5rem; background: linear-gradient(90deg, rgba(229, 26, 34, 0.03) 0%, transparent 100%); padding-top: 1rem; padding-bottom: 1rem; }
+.format-icon { font-family: var(--font-display); color: var(--accent-cyan); letter-spacing: 0.1em; margin-bottom: 0.5rem; font-weight: 700; }
+.format-item h3 { font-size: 1.6rem; margin-bottom: 0.5rem; color: var(--text-main); }
+.format-item p { color: var(--text-muted); font-size: 0.95rem; }
+
+.cases-slider-wrap { width: 100%; position: relative; margin-left: -24px; margin-right: -24px; width: calc(100% + 48px); }
+.cases-slider { display: flex; overflow-x: auto; gap: 1.5rem; padding: 1rem 24px 2rem 24px; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; }
+.cases-slider::-webkit-scrollbar { display: none; }
+.cases-slider.active { cursor: grabbing; cursor: -webkit-grabbing; }
+.case-card { min-width: 320px; width: 320px; flex-shrink: 0; scroll-snap-align: start; background: var(--surface-color); border: 1px solid var(--border-color); border-top: 4px solid var(--text-main); padding: 2rem; border-radius: 8px; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.03); user-select: none; }
+.case-card:hover { border-top-color: var(--accent-cyan); box-shadow: 0 15px 30px rgba(0,0,0,0.08); transform: translateY(-5px); }
+.case-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); }
+.case-user { display: flex; align-items: center; gap: 1rem; }
+.case-avatar-wrap { width: 50px; height: 50px; border-radius: 50%; padding: 2px; background: var(--text-main); display: flex; align-items: center; justify-content: center; }
+.case-avatar { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #fff; pointer-events: none; }
+.case-name { font-family: var(--font-display); font-size: 1.2rem; color: var(--text-main); text-transform: uppercase; font-weight: 700; }
+.case-roi { font-family: var(--font-cyber); font-size: 1.1rem; color: var(--accent-cyan); font-weight: 900; white-space: nowrap; }
+.case-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+.accordion { display: flex; flex-direction: column; gap: 0.5rem; }
+.module, .faq-item { background: var(--surface-color); border: 1px solid var(--border-color); border-left: 4px solid transparent; transition: all 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.module:hover, .faq-item:hover { border-left-color: var(--accent-cyan); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.module-head, .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 1.5rem; color: var(--text-main); font-size: 1.2rem; letter-spacing: 0.05em; cursor: pointer; font-weight: 700; }
+.module-body, .faq-answer { height: 0; overflow: hidden; transition: height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); background: #FAFAFA; color: var(--text-muted); }
+.module.active .module-head, .faq-item.active .faq-question { border-bottom: 1px solid var(--border-color); }
+.module-body ul, .faq-answer-content { padding: 1.5rem; }
+.module-body ul li { padding: 0.5rem 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; color: var(--text-main); }
+.module-body ul li:last-child { border: none; }
+.module-body ul li::before { content: ''; width: 6px; height: 6px; background: var(--accent-cyan); margin-right: 12px; }
+
+.pricing-grid, .payment-grid { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 1.5rem !important; align-items: stretch !important; width: 100% !important; }
+@media (max-width: 991px) { .pricing-grid, .payment-grid { grid-template-columns: 1fr !important; } }
+
+.price-card, .payment-card { background: var(--surface-color); border: 1px solid var(--border-color); padding: 3rem 2rem; display: flex; flex-direction: column; position: relative; box-shadow: 0 5px 15px rgba(0,0,0,0.03); text-align: left !important; align-items: flex-start !important; }
+.price-card:hover, .price-card.featured:hover, .payment-card:hover { transform: translateY(-5px) !important; box-shadow: 0 15px 35px rgba(0,0,0,0.08) !important; border-color: var(--text-main); }
+.price-card.featured { border: 2px solid var(--accent-cyan) !important; transform: none !important; margin: 0 !important; width: 100% !important; z-index: 2 !important; }
+
+.badge { position: absolute; top: -12px; right: 20px; background: var(--text-main); color: #fff; font-family: var(--font-display); font-size: 0.8rem; padding: 0.4rem 1rem; letter-spacing: 0.1em; font-weight: 700; }
+.price-card h3 { font-size: 1.8rem; color: var(--text-main); margin-bottom: 0.5rem; }
+.price { font-family: var(--font-display); font-size: 3rem; margin-bottom: 2rem; color: var(--accent-cyan); line-height: 1; font-weight: 700; }
+.price-card ul { margin-bottom: 2rem; flex-grow: 1; width: 100%; }
+.price-card li { color: var(--text-muted); padding: 0.75rem 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; }
+.price-card a { margin-top: auto; }
+
+.payment-methods { margin-top: 5rem; padding-top: 4rem; border-top: 1px solid var(--border-color); }
+.payment-title { text-align: left !important; border-left: 4px solid var(--accent-cyan) !important; padding-left: 1.5rem !important; margin-bottom: 3rem !important; font-size: 2rem !important; font-family: var(--font-display); color: var(--text-main); text-transform: uppercase; letter-spacing: 0.05em; }
+.payment-icon { font-family: var(--font-display); font-size: 1.2rem; color: var(--text-main); margin-bottom: 1.2rem; font-weight: 700; height: 40px; display: flex; align-items: center; justify-content: flex-start !important; width: 100% !important; letter-spacing: 0.1em; }
+.payment-card h4 { font-size: 1.2rem; margin-bottom: 0.75rem; color: var(--text-main); text-transform: uppercase; font-family: var(--font-display); }
+.payment-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
+
+.mono-card { border: 2px solid var(--text-main) !important; background: #FFFFFF; transform: scale(1.05) !important; box-shadow: 0 15px 35px rgba(0,0,0,0.08) !important; position: relative !important; z-index: 2 !important; }
+.mono-card:hover { border-color: var(--accent-cyan) !important; transform: scale(1.08) !important; }
+.mono-card .payment-icon { position: static !important; transform: none !important; background: transparent !important; height: 60px !important; margin-bottom: 1.5rem !important; padding: 0 !important; }
+.mono-logo { max-height: 55px !important; width: auto !important; object-fit: contain !important; object-position: left center !important; margin-left: 0 !important; filter: none !important; }
+
+.footer { padding: 4rem 0; border-top: 1px solid var(--border-color); background: #E5E7EB; position: relative; z-index: 2; }
+.footer .container { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+.footer-copy { font-family: var(--font-display); color: var(--text-main); letter-spacing: 0.05em; font-weight: 700; }
+.footer-slogan { color: var(--text-muted); font-size: 0.9rem; }
+.footer-socials { margin-top: 1.5rem; }
+.cyber-link { font-family: var(--font-display); font-size: 1.1rem; color: var(--text-main); text-decoration: none; letter-spacing: 0.15em; font-weight: 700; transition: all 0.3s ease; }
+.cyber-link:hover { color: var(--accent-cyan); }
+
+@media (max-width: 768px) {
+  .section { padding: 3rem 0; }
+  .btn, .btn-spark { padding: 1rem 0.5rem; }
+  .hero { min-height: 950px; padding-top: 2rem; }
+  .hero-title { font-size: 24vw; position: relative; z-index: 1; }
+  
+  .hero-character-layer {
+    top: 140px; left: 50%;
+    transform: translateX(-40%); width: 130%; max-width: none;
+  }
+  
+  .hero-bottomGroup {
+    margin-top: 260px; width: 100%; padding: 2rem 1.5rem;
+    background: rgba(255, 255, 255, 0.8) !important;
+  }
+}
+  </style>
 
   <script>
     !function(f,b,e,v,n,t,s)
@@ -54,31 +262,14 @@
   
       <div class="hero-bottomGroup">
         <p class="hero-subtitle">
-          Системный арбитраж трафика: стратегия стабильного ROI и залива с Facebook/Google.
+          Арбитраж трафика с нуля: как заливать в плюс с Facebook и Google, работая с CPA-сетями.
         </p>
         
         <div class="hero-free">
-          Бесплатный мануал:<br>«Антидетект, прокси и первый запуск без банов»
-        </div>
-        
-        <div class="hero-timer" aria-label="Таймер">
-          <div class="time-box">
-            <span id="tHH">12</span>
-            <div class="time-label">ЧАСОВ</div>
-          </div>
-          <span class="tSep">:</span>
-          <div class="time-box">
-            <span id="tMM">29</span>
-            <div class="time-label">МИНУТ</div>
-          </div>
-          <span class="tSep">:</span>
-          <div class="time-box">
-            <span id="tSS" class="tSS">27</span>
-            <div class="time-label">СЕКУНД</div>
-          </div>
+          Подойдет ли вам курс?<br>Получите бесплатную 15-минутную консультацию
         </div>
   
-        <a href="https://t.me/fanflowpro_bot" class="btn-spark btn-action">Скачать бесплатно</a>
+        <a href="https://t.me/wakaritoyama" class="btn-spark btn-action" target="_blank">Получить консультацию</a>
       </div>
     </div>
   </header>
@@ -88,16 +279,16 @@
       <div class="container">
         <div class="editorial-header">
           <span class="ed-num">01</span>
-          <h2 class="section-title">Твой путь к профиту</h2>
+          <h2 class="section-title">Что даст этот курс</h2>
         </div>
-        <p class="section-lead">INKED.TEACHES — это практический курс, который покажет, как конвертировать рекламный бюджет в чистые деньги. Ты:</p>
+        <p class="section-lead">INKED.TEACHES — это жесткая техническая база, которая проведет тебя от полного непонимания рынка до стабильного ROI.</p>
         <ul class="list-grid">
-          <li>Получишь алгоритм запуска связок с нуля</li>
-          <li>Научишься обходить антифрод-системы (баны)</li>
-          <li>Освоишь работу с трекерами и аналитикой</li>
-          <li>Поймешь, как масштабировать плюсовые кампании</li>
+          <li>Узнаешь, как работают CPA-сети и почему рекламодатели платят за лиды</li>
+          <li>Научишься настраивать инфраструктуру для Facebook и Google без банов</li>
+          <li>Освоишь работу с антидетектами, прокси и платежками</li>
+          <li>Поймешь алгоритм: от выбора оффера до вывода профита</li>
         </ul>
-        <blockquote class="quote">«Трафик — это сухая математика. Зарабатывают те, кто умеет считать цену лида и не боится тестов.»</blockquote>
+        <blockquote class="quote">«Трафик — это сухая математика. Зарабатывают те, кто умеет считать цену лида (CPL) и не боится тестов.»</blockquote>
       </div>
     </section>
 
@@ -107,12 +298,12 @@
           <span class="ed-num">02</span>
           <h2 class="section-title">Для кого этот курс</h2>
         </div>
-        <p class="section-lead">Для тех, кто хочет построить систему стабильного залива трафика, не завися от штормов Facebook и выгорания связок.</p>
+        <p class="section-lead">Мы убрали воду и оставили только те связки и алгоритмы, которые работают прямо сейчас.</p>
         <ul class="list-grid">
-          <li>Новички, готовые разобраться в технической базе</li>
-          <li>Соло-арбитражники, уставшие лить в микроминус</li>
-          <li>Таргетологи, желающие перейти в CPA-сети</li>
-          <li>Будущие тимлиды медиабаинг-команд</li>
+          <li>Новички, готовые разобраться в арбитражной техничке</li>
+          <li>Соло-байеры, которые устали лить в микроминус</li>
+          <li>Студенты и наемные сотрудники, ищущие профит в онлайне</li>
+          <li>Будущие медиабайеры для работы в арбитражных командах</li>
         </ul>
       </div>
     </section>
@@ -123,28 +314,28 @@
           <span class="ed-num">03</span>
           <h2 class="section-title">Экономика залива</h2>
         </div>
-        <p class="section-lead">Арбитраж не терпит гаданий. Мы строим жесткую конверсионную трубу по схеме:</p>
+        <p class="section-lead">Весь процесс арбитража состоит из жесткой конверсионной трубы (4 шага):</p>
         
         <div class="decomp-grid">
           <div class="decomp-card">
             <div class="decomp-num">01</div>
-            <h3>Инфраструктура</h3>
-            <p>Настройка антидетекта, покупка трастовых аккаунтов, вязание платежек и настройка клоаки.</p>
+            <h3>Выбор оффера</h3>
+            <p>Регистрируешься в CPA-сети и берешь ссылку на конвертящий оффер (подписки, e-com, прилы).</p>
           </div>
           <div class="decomp-card">
             <div class="decomp-num">02</div>
-            <h3>Связка</h3>
-            <p>Тест креативов (ИИ/спай-сервисы), прелендов и выбор конвертящего оффера в CPA-сети.</p>
+            <h3>Инфраструктура</h3>
+            <p>Настраиваешь антидетект-браузер и вяжешь карты, чтобы фейсбук давал крутить рекламу без банов.</p>
           </div>
           <div class="decomp-card">
             <div class="decomp-num">03</div>
-            <h3>Оптимизация</h3>
-            <p>Отключение минусовых площадок, срез дорогих аудиторий, выход на целевую стоимость лида (CPL).</p>
+            <h3>Залив трафика</h3>
+            <p>Тестируешь креативы с бюджетом от $10-$20, собираешь первые клики и целевые заявки (лиды).</p>
           </div>
           <div class="decomp-card">
             <div class="decomp-num">04</div>
-            <h3>Масштаб (ROI)</h3>
-            <p>Увеличение бюджетов, подключение автозаливов, дублирование кампаний и рост чистой прибыли.</p>
+            <h3>Профит (ROI)</h3>
+            <p>Рекламодатель платит за лид $30. Твои затраты на рекламу (спенд) — $10. Твоя чистая прибыль = $20.</p>
           </div>
         </div>
       </div>
@@ -154,42 +345,39 @@
       <div class="container">
         <div class="editorial-header">
           <span class="ed-num">04</span>
-          <h2 class="section-title">Модули системы</h2>
+          <h2 class="section-title">Модули обучения</h2>
         </div>
         <div class="accordion">
           <div class="module">
-            <button class="module-head">МОДУЛЬ 1 — БАЗА И ИНФРАСТРУКТУРА</button>
+            <button class="module-head">МОДУЛЬ 1 — ВВЕДЕНИЕ И CPA-СЕТИ</button>
             <div class="module-body">
               <ul>
-                <li>Настройка антидетект-браузера и прокси</li>
-                <li>Фарм, логи, кинги: разбор типов аккаунтов FB/Google</li>
-                <li>Платежные решения и вязы карт без Risk Payment</li>
-                <li>Настройка трекера (Keitaro) и постбеков</li>
-                <li>Клоакинг: как прятать серые офферы от модерации</li>
+                <li>Словарь арбитражника: переводим термины (ROI, CPL, CTR) на человеческий</li>
+                <li>Регистрация в топовых CPA-сетях: где брать приватные офферы</li>
+                <li>Разбор вертикалей: куда лить новичку с минимальным бюджетом</li>
+                <li>Финансовый учет: как считать экономику и не слить оборотку</li>
               </ul>
             </div>
           </div>
           <div class="module">
-            <button class="module-head">МОДУЛЬ 2 — ИСТОЧНИКИ И СВЯЗКИ</button>
+            <button class="module-head">МОДУЛЬ 2 — ТЕХНИЧЕСКАЯ ИНФРАСТРУКТУРА</button>
             <div class="module-body">
               <ul>
-                <li>Алгоритмы Facebook и Google Ads в 2026 году</li>
-                <li>Работа со спай-сервисами: как красть чужие плюсовые связки</li>
-                <li>Генерация пробивающих креативов через нейросети</li>
-                <li>Выбор ниши: Нутра, iGaming, Крипта, Свипстейки</li>
-                <li>Регистрация в топовых CPA-сетях и выбивание бампов</li>
+                <li>Настройка антидетект-браузера и качественных прокси</li>
+                <li>Шопы аккаунтов: где покупать логи/кинги и как их вязать</li>
+                <li>Платежные решения: как вязать карты к кабинетам без Risk Payment</li>
+                <li>Клоакинг: базовая защита ссылок от модераторов Facebook</li>
               </ul>
             </div>
           </div>
           <div class="module">
-            <button class="module-head">МОДУЛЬ 3 — АНАЛИТИКА И МАСШТАБИРОВАНИЕ</button>
+            <button class="module-head">МОДУЛЬ 3 — ЗАЛИВ И АНАЛИТИКА</button>
             <div class="module-body">
               <ul>
-                <li>Анализ статы в трекере: за что мы платим</li>
-                <li>Масштабирование бюджетом vs Масштабирование дублями</li>
-                <li>Разбан аккаунтов: аппилы, прохождение ЗРД и полиси</li>
-                <li>Переход от соло-арбитражника к построению команды (Медиабаинг)</li>
-                <li>Финансовый учет и распределение оборотки</li>
+                <li>Спай-сервисы: как находить и адаптировать плюсовые креативы конкурентов</li>
+                <li>Пошаговый запуск первой рекламной кампании клик-за-кликом</li>
+                <li>Анализ статистики: отключение минусовых адсетов и срез дорогих аудиторий</li>
+                <li>Разбан аккаунтов: прохождение ЗРД, аппилы и чекпоинты</li>
               </ul>
             </div>
           </div>
@@ -201,9 +389,9 @@
       <div class="container">
         <div class="editorial-header">
           <span class="ed-num">05</span>
-          <h2 class="section-title">Система в действии</h2>
+          <h2 class="section-title">Первые результаты</h2>
         </div>
-        <p class="section-lead">Реальные цифры тех, кто настроил инфраструктуру и нашел свои связки.</p>
+        <p class="section-lead">Цифры тех, кто заходил с нуля, поднял техничку по мануалу и сделал первые заливы.</p>
         
         <div class="cases-slider-wrap">
           <div class="cases-slider">
@@ -214,9 +402,9 @@
                   <div class="case-avatar-wrap"><img src="assets/ava1.jpg" alt="Аватар" class="case-avatar"></div>
                   <span class="case-name">Алина, 22</span>
                 </div>
-                <span class="case-roi">ROI 120%</span>
+                <span class="case-roi">+ $145</span>
               </div>
-              <p>Лью нутру на Латам. Раньше аккаунты отлетали на старте, но после настройки клоаки по первому модулю FB дает крутить спенд до $500 дейли на одном кабе.</p>
+              <p>Зашла полным нулем. Подняла техничку по мануалу, запустила SP-оффер (подписки). Вышла в плюс на $145 за первую неделю тестов.</p>
             </div>
 
             <div class="case-card">
@@ -225,9 +413,9 @@
                   <div class="case-avatar-wrap"><img src="assets/ava2.jpg" alt="Аватар" class="case-avatar"></div>
                   <span class="case-name">Макс, 28</span>
                 </div>
-                <span class="case-roi">КОМАНДА</span>
+                <span class="case-roi">+ $850</span>
               </div>
-              <p>Курс дал понимание, как систематизировать процессы. Перевел своих баеров с FB на TikTok Ads под iGaming. Текущий чистый профит тимы — $8,200/мес.</p>
+              <p>Освоил базу. Понял механику залива и работу с трекером. Собрал стату на $50 спенда и устроился младшим баером в тиму за процент от профита.</p>
             </div>
 
             <div class="case-card">
@@ -236,9 +424,9 @@
                   <div class="case-avatar-wrap"><img src="assets/ava3.jpg" alt="Аватар" class="case-avatar"></div>
                   <span class="case-name">Кристина, 24</span>
                 </div>
-                <span class="case-roi">+ $7,200</span>
+                <span class="case-roi">+ $90</span>
               </div>
-              <p>Освоила Google Ads. Заливаю белую товарку и e-com, вообще забыла про баны. Настроила трекер и теперь вижу, какие ключи жрут бюджет, а какие дают лидов.</p>
+              <p>Сделала тестовый залив на $50 в белую товарку. Получила $140 выплаты от CPA-сети. Экономика сходится, готовлю кабы под масштабирование.</p>
             </div>
 
             <div class="case-card">
@@ -247,9 +435,9 @@
                   <div class="case-avatar-wrap"><img src="assets/ava4.jpg" alt="Аватар" class="case-avatar"></div>
                   <span class="case-name">Лера, 21</span>
                 </div>
-                <span class="case-roi">+ $3,100</span>
+                <span class="case-roi">+ $430</span>
               </div>
-              <p>Всегда боялась лезть в гемблу из-за жесткой модерации. Скрипты по фарму аккаунтов и ИИ-креативы решили проблему. Вышла в стабильный плюс на Tier-3 гео.</p>
+              <p>Боялась банов ФБ. Но тут дают жесткий сетап: отлетел акк — взял новый лог за пару баксов по инструкции, привязал карту и льешь дальше.</p>
             </div>
 
             <div class="case-card">
@@ -258,9 +446,9 @@
                   <div class="case-avatar-wrap"><img src="assets/ava5.jpg" alt="Аватар" class="case-avatar"></div>
                   <span class="case-name">Денис, 30</span>
                 </div>
-                <span class="case-roi">ТИМЛИД</span>
+                <span class="case-roi">ROI 140%</span>
               </div>
-              <p>Зашел на курс подтянуть техничку. Полностью пересобрал связки сетапов под FB. Теперь фармим аккаунты in-house, сэкономили на расходниках 40% бюджета.</p>
+              <p>Купил базовый тариф. Воды нет, только техничка. Отбил стоимость обучения за 10 дней на простых офферах. ROI стабильно держится выше 100%.</p>
             </div>
 
             <div class="case-card">
@@ -269,9 +457,9 @@
                   <div class="case-avatar-wrap"><img src="assets/ava6.jpg" alt="Аватар" class="case-avatar"></div>
                   <span class="case-name">Соня, 25</span>
                 </div>
-                <span class="case-roi">+ $5,800</span>
+                <span class="case-roi">+ $620</span>
               </div>
-              <p>Устала воевать с цукербергом и ушла в нативки. Нашла профитный подход на крипту. Цена лида высокая, но конверт в депы перекрывает все затраты.</p>
+              <p>Настроила связку через антик и прокси. Шаблоны и вайты дали готовые, оставалось только запустить рекламную кампанию и следить за ценой лида.</p>
             </div>
 
             <div class="case-card">
@@ -280,9 +468,9 @@
                   <div class="case-avatar-wrap"><img src="assets/ava7.jpg" alt="Аватар" class="case-avatar"></div>
                   <span class="case-name">Катя, 23</span>
                 </div>
-                <span class="case-roi">+ $2,900</span>
+                <span class="case-roi">+ $200</span>
               </div>
-              <p>Начала со свипстейков, так как оборотки было мало. Очень понятная база: от покупки логов до запуска первых РК. Дальше планирую переходить в нутру.</p>
+              <p>Совмещаю с учебой. 2 часа вечером на чек статы и перезапуск кабов. Заработала $200 чистыми — для старта с минимальной обороткой пойдет.</p>
             </div>
 
             <div class="case-card">
@@ -291,9 +479,9 @@
                   <div class="case-avatar-wrap"><img src="assets/ava8.jpg" alt="Аватар" class="case-avatar"></div>
                   <span class="case-name">Влад, 27</span>
                 </div>
-                <span class="case-roi">БАЕР</span>
+                <span class="case-roi">+ $315</span>
               </div>
-              <p>Отбил стоимость обучения за первые три дня запуска. Получил контакты проверенных селлеров аккаунтов и платежек. Заливаю без микроспендов и холдов.</p>
+              <p>Главная ценность — селлеры расходников. До этого сливал бюджет на мусорные акки. Сейчас вяжу карты и заливаю без холдов и микроспендов.</p>
             </div>
 
             <div class="case-card">
@@ -302,9 +490,9 @@
                   <div class="case-avatar-wrap"><img src="assets/ava9.jpg" alt="Аватар" class="case-avatar"></div>
                   <span class="case-name">Настя, 26</span>
                 </div>
-                <span class="case-roi">+ $8,400</span>
+                <span class="case-roi">+ $1,200</span>
               </div>
-              <p>Уперлась в потолок из-за того, что не умела масштабироваться. После разбора кампаний поняла логику автоправил. Пробила финансовый потолок за месяц.</p>
+              <p>Разобралась, как работает CPA-рынок изнутри. Научилась считать цену лида (CPL) и отключать минусовые адсеты вовремя. Вышла в стабильный плюс.</p>
             </div>
 
             <div class="case-card">
@@ -313,9 +501,9 @@
                   <div class="case-avatar-wrap"><img src="assets/ava10.jpg" alt="Аватар" class="case-avatar"></div>
                   <span class="case-name">Вика, 20</span>
                 </div>
-                <span class="case-roi">+ $2,100</span>
+                <span class="case-roi">+ $110</span>
               </div>
-              <p>Мой первый месяц в арбитраже. Заходила полным нулем. Повторяла шаги за спикером: купила антик, прокси, взяла белый оффер в партнерке. Получилось.</p>
+              <p>Бюджет на старт $100. Разжевано понятно, термины типа 'постбек' или 'клоака' объяснили на пальцах. Сделала первые лиды и вывела профит.</p>
             </div>
 
           </div>
@@ -327,23 +515,23 @@
       <div class="container">
         <div class="editorial-header">
           <span class="ed-num">06</span>
-          <h2 class="section-title">Формат работы</h2>
+          <h2 class="section-title">Формат обучения</h2>
         </div>
         <div class="format-grid">
           <div class="format-item">
-            <div class="format-icon">[ БАЗА ]</div>
-            <h3>Закрытая платформа</h3>
-            <p>После оплаты ты получаешь доступ к обучающей среде. Все мануалы по настройке трекеров, контакты шопов с расходниками и шаблоны вайтов.</p>
+            <div class="format-icon">[ ТЕОРИЯ ]</div>
+            <h3>Понятная база</h3>
+            <p>Закрытая платформа с подробными уроками, полезными статьями и ссылками. Весь сложный сленг сразу переводим на человеческий язык.</p>
           </div>
           <div class="format-item">
-            <div class="format-icon">[ ЗАЛИВ ]</div>
-            <h3>Внедрение</h3>
-            <p>Смотришь уроки — поднимаешь инфраструктуру — запускаешь трафик. Кураторы чекают твои связки и помогают вытаскивать аккаунты из банов.</p>
+            <div class="format-icon">[ МАТЕРИАЛЫ ]</div>
+            <h3>Фирменные гайды</h3>
+            <p>Выверенные PDF-мануалы в стиле проекта, чек-листы для настройки антидетектов и пошаговые алгоритмы запуска связок.</p>
           </div>
           <div class="format-item">
-            <div class="format-icon">[ ROI ]</div>
-            <h3>Экосистема</h3>
-            <p>Оптимизация минусовых кампаний, выход на стабильный плюс и переход от соло-заливов к построению собственной команды.</p>
+            <div class="format-icon">[ ПРАКТИКА ]</div>
+            <h3>Жесткое внедрение</h3>
+            <p>Берешь нашу инструкцию, открываешь нужные сервисы и кликаешь по алгоритму. Если возникают баны — помогаем вырулить в плюс.</p>
           </div>
         </div>
       </div>
@@ -356,38 +544,69 @@
           <h2 class="section-title">Тарифы</h2>
         </div>
         <div class="pricing-grid">
+          
           <div class="price-card">
-            <h3>BASE</h3>
-            <div class="price">200 USDT</div>
+            <h3>STARTER</h3>
+            <div class="price">22 USDT</div>
             <ul>
-              <li>Полный доступ ко всем модулям</li>
-              <li>База проверенных шопов (аккаунты/карты)</li>
-              <li>Пожизненный доступ к обновлениям мануалов</li>
+              <li>Пробный технический модуль</li>
+              <li>Словарь: вся база терминов</li>
+              <li>Гайд по регистрации в CPA-сетях</li>
+              <li>Схема первого запуска</li>
             </ul>
-            <a href="https://t.me/fanflow_pro" class="btn btn-action">Связаться с менеджером</a>
+            <a href="https://secure.wayforpay.com/invoice/i9b257012a6aa" class="btn btn-action" target="_blank">Попробовать</a>
           </div>
+
           <div class="price-card featured">
-            <div class="badge">ХИТ ПРОДАЖ</div>
+            <div class="badge">ХИТ ДЛЯ СТАРТА</div>
+            <h3>BASE</h3>
+            <div class="price">150 USDT</div>
+            <ul>
+              <li>Доступ ко всем обучающим модулям</li>
+              <li>Все PDF-гайды и статьи платформы</li>
+              <li>База проверенных шопов (аккаунты/карты)</li>
+              <li>Пожизненный доступ к обновлениям</li>
+            </ul>
+            <a href="https://t.me/wakaritoyama" class="btn-spark btn-action" target="_blank">Связаться с менеджером</a>
+          </div>
+          
+          <div class="price-card">
             <h3>FLOW</h3>
-            <div class="price">450 USDT</div>
+            <div class="price">250 USDT</div>
             <ul>
               <li>Всё, что входит в тариф «BASE»</li>
-              <li>Закрытый чат арбитражников</li>
-              <li>Помощь с прохождением модерации</li>
-              <li>Проверка твоих креативов и лендингов</li>
+              <li>Личная помощь с обходом блокировок</li>
+              <li>Проверка твоих кампаний куратором</li>
+              <li>Помощь с составлением резюме баера</li>
             </ul>
-            <a href="https://t.me/fanflow_pro" class="btn-spark btn-action">Связаться с менеджером</a>
+            <a href="https://t.me/wakaritoyama" class="btn btn-action" target="_blank">Связаться с менеджером</a>
           </div>
-          <div class="price-card">
-            <h3>PRO</h3>
-            <div class="price">Через анкету</div>
-            <ul>
-              <li>Всё, что входит в тариф «FLOW»</li>
-              <li>Личный аудит твоих рекламных кампаний</li>
-              <li>Выдача приватных связок под ключ</li>
-              <li>Персональная сессия (разбор статы)</li>
-            </ul>
-            <a href="https://t.me/fanflow_pro" class="btn btn-action">Связаться с менеджером</a>
+        </div>
+
+        <div class="payment-methods">
+          <h3 class="payment-title">Методы оплаты</h3>
+          <div class="payment-grid">
+            
+            <div class="payment-card">
+              <div class="payment-icon">[ CRYPTO ]</div>
+              <h4>USDT / Крипта</h4>
+              <p>Прямой перевод TRC20/ERC20. Анонимно, без комиссий банков.</p>
+            </div>
+
+            <div class="payment-card mono-card">
+              <div class="payment-icon">
+                <img src="assets/mono.png" alt="Monobank Оплата частями" class="mono-logo">
+              </div>
+              <h4>Оплата частями (Monobank)</h4>
+              <p>Рассрочка 0% без переплат. Разбиваем сумму до 4 платежей.</p>
+            </div>
+
+            <div class="payment-card">
+              <div class="payment-icon">[ КАРТЫ UA ]</div>
+              <h4>Visa / Mastercard</h4>
+              <p>Прямой эквайринг гривны с любых украинских банков (Приват, ПУМБ и др.).</p>
+            </div>
+
           </div>
         </div>
       </div>
@@ -397,67 +616,67 @@
       <div class="container">
         <div class="editorial-header">
           <span class="ed-num">08</span>
-          <h2 class="section-title">FAQ</h2>
+          <h2 class="section-title">Частые вопросы</h2>
         </div>
         <div class="accordion">
           <div class="faq-item">
-            <button class="faq-question"><span>1. Какой нужен бюджет на старт?</span></button>
+            <button class="faq-question"><span>1. Какой нужен минимальный бюджет на старт?</span></button>
             <div class="faq-answer">
-              <div class="faq-answer-content">Минимум $300-$500. Эти деньги пойдут на технические расходники (антидетект, прокси, аккаунты) и тестовый бюджет на открут рекламы. Без оборотки в арбитраже делать нечего.</div>
+              <div class="faq-answer-content">Для старта нужно $100-$150. Около $30 уйдет на оплату базовых расходников (антидетект, прокси), остальное — это спенд (бюджет на рекламу), на котором ты будешь тестить связки.</div>
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-question"><span>2. Facebook постоянно банит. Что делать?</span></button>
+            <button class="faq-question"><span>2. Я ничего не понимаю в техничке. Справлюсь?</span></button>
             <div class="faq-answer">
-              <div class="faq-answer-content">Баны — это часть рутины. В курсе мы даем актуальные на 2026 год сетапы аккаунтов и алгоритмы прохождения ЗРД/Полиси, чтобы ты крутил рекламу стабильно.</div>
+              <div class="faq-answer-content">Абсолютно. Писать код не нужно. Вся работа — это правильные настройки в браузере и копирование готовых ссылок по нашей инструкции.</div>
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-question"><span>3. Какая вертикаль лучше для новичка?</span></button>
+            <button class="faq-question"><span>3. Что такое арбитраж трафика простыми словами?</span></button>
             <div class="faq-answer">
-              <div class="faq-answer-content">Начнем с белой товарки (e-com) или SP-офферов (подписки), чтобы набить руку на модерации без жестких банов. Дальше — переход в более прибыльные и серые ниши (iGaming, Nutra).</div>
+              <div class="faq-answer-content">Это когда ты настраиваешь рекламу на чужой оффер (товар, подписку, приложение) за свои деньги, и получаешь фиксированную выплату от CPA-сети за каждый лид.</div>
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-question"><span>4. Нужен ли английский язык для залива на бурж?</span></button>
+            <button class="faq-question"><span>4. Facebook постоянно банит рекламу. Как быть?</span></button>
             <div class="faq-answer">
-              <div class="faq-answer-content">Базового понимания достаточно. Креативы, лендинги и тексты объявлений переводятся через нейросети или заказываются у native-переводчиков в CPA-сети.</div>
+              <div class="faq-answer-content">Баны — это рутина. Аккаунты в арбитраже — это расходный материал. Мы даем шопы, где их можно купить за пару долларов, и алгоритм, как запускать новые взамен забаненных.</div>
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-question"><span>5. Вы даете связки, которые 100% принесут плюс?</span></button>
+            <button class="faq-question"><span>5. Нужно ли знать английский язык?</span></button>
             <div class="faq-answer">
-              <div class="faq-answer-content">Ни одна связка не живет вечно. Мы даем *удочку*: алгоритмы поиска офферов, копирования подходов конкурентов (через спай-сервисы) и тестов, чтобы ты сам генерировал плюсовые связки.</div>
+              <div class="faq-answer-content">Нет. Интерфейсы рекламных кабинетов понятны интуитивно, а креативы и тексты для бурж-аудитории мы переводим через нейросети.</div>
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-question"><span>6. Легален ли арбитраж трафика?</span></button>
+            <button class="faq-question"><span>6. Зачем мне покупать тариф STARTER за 22 USDT?</span></button>
             <div class="faq-answer">
-              <div class="faq-answer-content">Абсолютно. Это классический performance-маркетинг: ты привлекаешь клиентов рекламодателю за комиссионные. Вопросы возникают только к качеству офферов (скам мы не льем).</div>
+              <div class="faq-answer-content">Это трипваер (пробный продукт). Он нужен, чтобы ты без больших рисков изучил техническую базу, понял термины и разобрался, подходит ли тебе эта сфера.</div>
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-question"><span>7. Я ничего не понимаю в коде и сайтах. Справлюсь?</span></button>
+            <button class="faq-question"><span>7. Сколько времени в день нужно уделять?</span></button>
             <div class="faq-answer">
-              <div class="faq-answer-content">Да. Писать код с нуля не нужно. Ты научишься скачивать готовые лендинги, настраивать Keitaro по шаблону и разворачивать серверы в пару кликов.</div>
+              <div class="faq-answer-content">На старте достаточно 1-2 часов для настройки кампаний и вязов карт. Днем нужно будет только заглядывать в статку, чтобы отключать дорогие адсеты.</div>
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-question"><span>8. Есть ли гарантии окупаемости курса?</span></button>
+            <button class="faq-question"><span>8. Легально ли это?</span></button>
             <div class="faq-answer">
-              <div class="faq-answer-content">Нет. Гарантии профита в арбитраже — признак инфоцыганства. Мы даем инфраструктуру и логику. Если ты будешь тестировать связки и анализировать стату, результат — вопрос времени и спенда.</div>
+              <div class="faq-answer-content">Да. Это performance-маркетинг. Ты приводишь бизнесам клиентов и получаешь за это свой процент. Вопросы бывают только к серым офферам, но мы начинаем с белых.</div>
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-question"><span>9. У меня уже есть опыт, но я лью в минус. Поможет ли курс?</span></button>
+            <button class="faq-question"><span>9. Какие гарантии профита?</span></button>
             <div class="faq-answer">
-              <div class="faq-answer-content">Да. Скорее всего, у тебя дыры в инфраструктуре (плохие аккаунты) или ты не умеешь вовремя отключать минусовые адсеты. Модуль аналитики закроет эти пробелы.</div>
+              <div class="faq-answer-content">Гарантий нет, арбитраж — это не кнопка "бабло". Мы даем рабочую инфраструктуру. Твой ROI зависит от того, как грамотно ты будешь тестировать связки и анализировать стату.</div>
             </div>
           </div>
           <div class="faq-item">
-            <button class="faq-question"><span>10. Можно ли совмещать арбитраж с основной работой?</span></button>
+            <button class="faq-question"><span>10. Смогу ли я пойти работать в команду?</span></button>
             <div class="faq-answer">
-              <div class="faq-answer-content">Да, на старте это идеальный вариант. Пока связки крутятся, тебе нужно только заходить в трекер для проверки статистики (1-2 часа в день) и перезапускать аккаунты, если они отлетели в бан.</div>
+              <div class="faq-answer-content">Да. Рынок медиабаинга нуждается в кадрах. Освоив базу, ты сможешь пойти заливать трафик за зарплату и процент от чистой прибыли команды.</div>
             </div>
           </div>
         </div>
@@ -468,14 +687,118 @@
   <footer class="footer">
     <div class="container">
       <div class="footer-copy">© <span id="year">2026</span> INKED.TEACHES // SYSTEM</div>
-      <div class="footer-slogan">Трафик — это система, а не везение.</div>
+      <div class="footer-slogan">Твой системный вход в арбитраж трафика.</div>
       
       <div class="footer-socials">
-        <a href="https://t.me/fanflow_pro" target="_blank" class="cyber-link">[ TELEGRAM ]</a>
+        <a href="https://t.me/wakaritoyama" target="_blank" class="cyber-link">[ TELEGRAM ]</a>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const id = a.getAttribute('href');
+    if (!id || id === '#') return;
+
+    const target = document.querySelector(id);
+    if (!target) return;
+
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  const initSmoothAccordion = (headSelector, itemSelector, bodySelector) => {
+    document.querySelectorAll(headSelector).forEach(head => {
+      head.addEventListener('click', () => {
+        const currentItem = head.closest(itemSelector);
+        const currentBody = currentItem.querySelector(bodySelector);
+        const isActive = currentItem.classList.contains('active');
+
+        document.querySelectorAll(itemSelector).forEach(item => {
+          item.classList.remove('active');
+          const body = item.querySelector(bodySelector);
+          if (body) body.style.height = '0px';
+        });
+
+        if (!isActive) {
+          currentItem.classList.add('active');
+          currentBody.style.height = currentBody.scrollHeight + 'px';
+        }
+      });
+    });
+  };
+
+  initSmoothAccordion('.module-head', '.module', '.module-body');
+  initSmoothAccordion('.faq-question', '.faq-item', '.faq-answer');
+
+  const glowObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('glow-active');
+      } else {
+        entry.target.classList.remove('glow-active');
+      }
+    });
+  }, { rootMargin: '0px 0px -15% 0px', threshold: 0.1 });
+
+  document.querySelectorAll('.list-grid li').forEach(li => {
+    glowObserver.observe(li);
+  });
+
+  const slider = document.querySelector('.cases-slider');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  if (slider) {
+    slider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      slider.classList.add('active');
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+      slider.style.scrollSnapType = 'none'; 
+    });
+    
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      slider.classList.remove('active');
+      slider.style.scrollSnapType = 'x mandatory';
+    });
+    
+    slider.addEventListener('mouseup', () => {
+      isDown = false;
+      slider.classList.remove('active');
+      slider.style.scrollSnapType = 'x mandatory';
+    });
+    
+    slider.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2;
+      slider.scrollLeft = scrollLeft - walk;
+    });
+  }
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal-active');
+      }
+    });
+  }, { rootMargin: '0px 0px -15% 0px', threshold: 0.1 });
+
+  document.querySelectorAll('.section-title').forEach(title => {
+    title.classList.add('reveal-hidden'); 
+    revealObserver.observe(title);
+  });
+});
+  </script>
 </body>
 </html>
